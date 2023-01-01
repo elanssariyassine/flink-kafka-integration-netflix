@@ -1,0 +1,31 @@
+el anssari yassine 
+
+cd /kafka_2.13-3.0.0/bin
+
+Starting Zookeeper
+./zookeeper-server-start.sh ../config/zookeeper.properties 
+
+
+Staring Kafka Server
+./kafka-server-start.sh ../config/server.properties 
+
+Create Topics
+./kafka-topics.sh --create --topic inputtopic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+./kafka-topics.sh --create --topic outputttopic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+
+Listing all the topics
+./kafka-topics.sh --list --bootstrap-server localhost:9092
+
+
+Create Kafka Console Producer:
+./kafka-console-producer.sh --topic inputttopic --bootstrap-server localhost:9092
+
+Create Kafka Console Consumer:
+./kafka-console-consumer.sh --topic inputttopic_output --from-beginning --bootstrap-server localhost:9092
+
+Starting Apache Link
+cd flink-1.14.0/bin
+./start-cluster.sh
+
+
+
